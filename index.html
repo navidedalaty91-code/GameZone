@@ -1,0 +1,1266 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>GameZone</title>
+
+    <style>
+        @font-face {
+    font-family: "Vazir";
+    src : url(./font/Vazir.woff2) format("woff2"),          
+            url(./font/Vazir.woff) format("woff"),
+            url(./font/Vazir.ttf) format("truetype");
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            background-color: #151c26;
+            /* scroll-behavior: smooth; */
+            background: linear-gradient(135deg,#0f172a,#111827,#1e1b4b);
+            font-family: Vazir;
+        }
+        body {
+            margin: 0;
+            color: white;
+        }
+
+        /* Header */
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            background: linear-gradient(135deg,#1f2937,#2d2942);
+
+            padding: 25px 3%;
+            margin: 10px 2%;
+
+            border-radius: 15px;
+
+            gap: 20px;
+            border: 1px solid #2e3745;
+        }
+
+        /* Logo */
+
+        .logo {
+            padding-right: 2%;
+            white-space: nowrap;
+        }
+
+        .logo h1 {
+            margin: 5px 0;
+            font-size: xx-large;
+            font-weight: bold;
+        }
+
+        .first-span-under-logo {
+            color: aliceblue;
+        }
+
+        .second-span-under-logo {
+            color: #0018ff;
+        }
+
+        .search-box {
+            width: 400px;
+            padding: 12px 20px;
+            border-radius: 20px;
+            border: 1px solid #2e3745;
+            background: linear-gradient(
+            135deg,
+            #1f2937,
+            #2d2942
+            );
+            color: white;
+            transition: .3s;
+            font-family: Vazir;
+        }
+
+        .search-box:focus{
+        transform: scale(1.03);
+
+        border-color: #2563eb;
+
+        box-shadow: 0 0 20px rgba(37,99,235,.5);
+        outline: none;
+        }
+
+        input::placeholder{
+            color: #9ca3af;
+            font-size: 14px;
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+
+            gap: 10px;
+
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            display: inline-block;
+
+            padding: 10px 20px;
+
+            border: 0.5px solid #12171f;
+
+            background-color: #2c394c;
+
+            border-radius: 15px;
+
+            color: white;
+
+            text-decoration: none;
+
+            white-space: nowrap;
+
+            transition: all 0.3s ease;
+        }
+
+        nav a:hover {
+            border-color: #6aa7ff;
+            transform: scale(1.05);
+            background-color: #34445c;
+        }
+
+        /* Main */
+
+        main {
+            line-height: 2;
+        }
+
+        .main-section-childs,
+        .main-section-childs-two {
+            color: #ffffff;
+
+            background: linear-gradient(135deg,#1f2937,#2d2942);
+
+            width: 90%;
+            max-width: 1200px;
+
+            margin: 30px auto 20px;
+
+            border-radius: 10px;
+
+            padding: 20px 3%;
+
+            font-size: medium;
+            border: 1px solid #2e3745;
+        }
+
+        /* وقتی صفحه کوچک یا زوم زیاد شد */
+
+        @media (max-width: 900px) {
+
+            header {
+                flex-direction: column;
+            }
+
+            .logo {
+                padding-right: 0;
+            }
+
+            nav {
+                width: 100%;
+
+                display: grid;
+
+                grid-template-columns: repeat(2, 1fr);
+
+                gap: 10px;
+            }
+
+            nav a {
+                text-align: center;
+                padding: 10px;
+            }
+        }
+
+        /* موبایل */
+
+        @media (max-width: 500px) {
+
+            header {
+                padding: 15px 10px;
+            }
+
+            .logo h1 {
+                font-size: x-large;
+            }
+
+            nav {
+                grid-template-columns: 1fr;
+            }
+
+            nav a {
+                padding: 8px;
+                font-size: 13px;
+            }
+
+            .main-section-childs,
+            .main-section-childs-two {
+                width: 94%;
+                padding: 15px 4%;
+            }
+        }
+        .game-card{
+            background: linear-gradient(135deg,#1f2937,#221f37);
+            border-radius: 15px;
+            padding: 20px;
+            width: 100%;
+            font-size: 12px;
+            direction: rtl;
+            border: 1px solid #2e3745;
+            box-shadow: 4px -4px 10px #000;
+            transition: all 0.3s ease;
+        }
+
+        .game-card:hover{
+            transform: translateY(-10px) scale(1.03) ;
+            border-color: #6aa7ff;
+            box-shadow: 10px -10px 20px #000;
+        }
+        .game-card img {
+            width: 100%;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+        }
+        .game-card img:hover{
+            transform: scale(1.05);
+        }
+        .a-under-article{
+            display: block;
+            color: #ffffff;
+            text-decoration: none;
+            border: 0.5px solid #206cd8;
+            padding: 8px;
+            width: 100%;
+            border-radius: 6px;
+            margin-top: 20px;
+            transition: all 0.3s ease;
+            font-size: 15px;
+            text-align: center;
+            background: linear-gradient(
+        90deg,
+        #2563eb,
+        #7c3aed
+    );
+}
+
+        .a-under-article:hover{
+            transform: scale(1.1);
+            cursor: pointer;
+        }
+        .div-under-article{
+            font-size: 12px;
+            display: flex;
+            justify-content: space-between;
+            line-height: 3;
+        }
+        .game-grid{
+            display: grid;
+            grid-template-columns: repeat(4, 300px);
+            gap: 10px;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        .game-card h2{
+            font-size:20px;
+            direction: ltr;
+        }
+        .game-card p{
+            font-size: medium;
+            margin-top: 10px;
+        }
+        .game-grid:has(.game-card:hover) .game-card:not(:hover) {
+    filter: blur(1px);
+}
+
+ .game-grid:has(.game-card img:hover) .game-card:not(:has(img:hover)) img {
+    filter: blur(5px);
+}
+
+ .game-grid:has(.game-card a:hover) .game-card:not(:has(a:hover)) {
+    filter: blur(10px);
+}
+
+.popular-div-games{
+    display: flex;
+    justify-content: space-between;
+    text-align: center;
+    font-size: 25px;
+    margin-top: 30px;
+}
+
+.popular-div-games-first-p{
+    margin-right: 80px;
+    font-weight: bold;
+}
+.popular-div-games-second-p{
+    margin-left: 80px;
+    font-weight: bold;
+}
+.newest-games{
+        display: grid;
+    grid-template-columns: repeat(3, 350px);
+    gap: 20px;
+    justify-content: center;
+    margin-top: 20px;
+    margin-right: 50px;
+}
+.newest-games-text{
+    display: flex;
+    justify-content: space-between;
+    text-align: center;
+    font-size: 25px;
+    margin-top: 50px;
+}
+.newest-games-text-first{
+        margin-right: 80px;
+    font-weight: bold;
+}
+.newest-games-text-second{
+        margin-left: 80px;
+    font-weight: bold;
+}
+.game-card1{
+    background-color:#1f2937 ;
+    border-radius: 15px;
+    line-height: 3;
+    width: 80%;
+    border: 1px solid #2e3745;
+    transition: all 0.3s ease;
+    margin-top: 30px;
+    padding-bottom: 20px;
+}
+.game-card1:hover{
+    transform: translateY(-10px) scale(1.05);
+    border-color: #6aa7ff;
+}
+.game-card1 img{
+    width: 100%;
+    border-radius: 15px 15px 0 0;
+}
+.game-card1 h2{
+    direction: ltr;
+}
+.div-under-div{
+    padding: 0 20px 0 20px;
+}
+.div-under-article1{
+    display: flex;
+    justify-content: space-between;
+}
+        .a-under-article1{
+            display: block;
+            color: #ffffff;
+            background-color: #206cd8;
+            text-decoration: none;
+            border: 0.5px solid #206cd8;
+            padding: 3px;
+            width: 100%;
+            border-radius: 6px;
+            margin-top: 20px;
+            font-size: 15px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+        .a-under-article1:hover{
+            transform: scale(1.1);
+            cursor: pointer;
+        }
+        .newest-games:has(.game-card1:hover) .game-card1:not(:hover) {
+            filter: blur(1px);
+        }
+        
+        .div-under-footer{
+            background: linear-gradient(135deg,#1f2937,#221f37);
+            margin: 50px 20px;
+            border-radius: 15px;
+            padding: 30px;
+            text-align: center;
+            line-height: 2;
+            border: 1px solid #2e3745;
+        }
+
+        .div-under-footer p{
+            font-size: 17px;
+        }
+        .div-under-footer h2{
+            font-size: xx-large;
+        }
+        .users-email-input{
+            background: linear-gradient(135deg, #1f2937, #2d2942);
+            color: #fff;
+            width: 400px;
+            height: 45px;
+            margin-top: 20px;
+            border-radius: 20px;
+            outline: none;
+            padding: 0 20px;
+            border: 1px solid #2e3745;
+            transition: all 0.3s ease;
+                font-family: 'Vazir'
+        }
+        .users-email-input:focus{
+            border: 1px solid #21406a;
+            transform: scale(1.03);
+            box-shadow: 0 0 20px rgba(37,99,235,.5);
+        outline: none;
+        }
+        .button-under-div-under-footer{
+            background-color: #2563eb;
+            border: none;
+            padding: 11px 25px;
+            margin-right: 10px;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 15px;
+            font-weight: bold;
+            color: #fff;
+                font-family: 'Vazir';
+        }
+        .button-under-div-under-footer:hover{
+            transform: scale(1.03);
+            box-shadow: 0 0 20px rgba(37,99,235,.5);
+        }
+        .div-brother-of-div-under-footer{
+            text-align: center;
+            line-height: 2;
+            background-color: #0f172a;
+            border-top: 1px solid #2e3745;
+        }
+        .div-brother-of-div-under-footer h3{
+            font-size: x-large;
+        }
+        /* ========================= */
+/*       Responsive Design    */
+/* ========================= */
+
+
+/* لپتاپ کوچک و تبلت */
+@media (max-width:1200px){
+
+    .game-grid{
+        grid-template-columns: repeat(3, 300px);
+    }
+
+    .newest-games{
+        grid-template-columns: repeat(2,350px);
+        margin-right:0;
+    }
+
+}
+
+
+/* تبلت */
+@media (max-width:900px){
+
+    header{
+        flex-direction:column;
+        gap:25px;
+        margin:10px 3%;
+    }
+
+
+    .logo{
+        padding-right:0;
+    }
+
+
+    .search-box{
+        width:80%;
+    }
+
+
+    nav{
+        width:100%;
+        justify-content:center;
+    }
+
+
+    nav a{
+        flex:1;
+        text-align:center;
+    }
+
+
+    .game-grid{
+        grid-template-columns:repeat(2, minmax(250px,300px));
+    }
+
+
+    .newest-games{
+        grid-template-columns:repeat(2,300px);
+    }
+
+
+    .popular-div-games,
+    .newest-games-text{
+        font-size:20px;
+    }
+
+
+    .popular-div-games-first-p,
+    .newest-games-text-first{
+        margin-right:30px;
+    }
+
+
+    .popular-div-games-second-p,
+    .newest-games-text-second{
+        margin-left:30px;
+    }
+
+}
+
+
+
+/* موبایل */
+@media(max-width:600px){
+
+
+    header{
+        padding:20px 10px;
+    }
+
+
+    .logo h1{
+        font-size:28px;
+    }
+
+
+    .search-box{
+        width:95%;
+    }
+
+
+    nav{
+        display:grid;
+        grid-template-columns:1fr;
+        width:100%;
+    }
+
+
+    nav a{
+        width:100%;
+    }
+
+
+
+    .main-section-childs{
+        width:94%;
+        padding:15px;
+        font-size:14px;
+    }
+
+
+
+    .game-grid{
+
+        grid-template-columns:1fr;
+
+        width:90%;
+
+        margin:auto;
+
+    }
+
+
+    .game-card{
+
+        width:100%;
+
+    }
+
+
+
+    .newest-games{
+
+        grid-template-columns:1fr;
+
+        width:90%;
+
+        margin:auto;
+
+    }
+
+
+    .game-card1{
+
+        width:100%;
+
+    }
+
+
+
+    .popular-div-games,
+    .newest-games-text{
+
+        font-size:18px;
+
+        margin-right:20px;
+        margin-left:20px;
+
+    }
+
+
+    .popular-div-games-first-p,
+    .newest-games-text-first{
+
+        margin-right:0;
+
+    }
+
+
+    .popular-div-games-second-p,
+    .newest-games-text-second{
+
+        margin-left:0;
+
+    }
+
+
+
+    .div-under-footer{
+
+        margin:30px 10px;
+
+        padding:20px 10px;
+
+    }
+
+
+
+    .div-under-footer h2{
+
+        font-size:22px;
+
+    }
+
+
+
+    .users-email-input{
+
+        width:90%;
+
+    }
+
+
+
+    .button-under-div-under-footer{
+
+        margin-top:15px;
+
+        width:90%;
+
+        margin-right:0;
+
+    }
+
+
+    .div-brother-of-div-under-footer{
+
+        padding:15px;
+
+        font-size:13px;
+
+    }
+
+}
+@keyframes show{
+
+from{
+opacity:0;
+transform:translateY(30px);
+}
+
+to{
+opacity:1;
+transform:translateY(0);
+}
+
+}
+.favorite-btn{
+
+    position:absolute;
+
+    top:10px;
+    right:10px;
+
+    z-index:20;
+
+    width:40px;
+    height:40px;
+
+    border-radius:50%;
+
+    border:none;
+
+    background:rgba(0,0,0,.5);
+
+    font-size:22px;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+}
+
+
+.favorite-btn:hover{
+
+    transform:scale(1.15);
+
+}
+
+
+.favorite-btn.liked{
+
+    box-shadow:
+    0 0 20px #ff0066;
+
+}
+   </style>
+</head>
+
+<body>
+
+    <header>
+
+        <div class="logo">
+            <h1>
+                🎮<span class="first-span-under-logo">Game</span><span class="second-span-under-logo">Zone</span>
+            </h1>
+        </div>
+        <input class="search-box" type="text" placeholder="جستجو بازی...">
+        <nav>
+            <a href="#" id="header-nav-first-a">خانه</a>
+            <a href="#games" id="header-nav-second-a">بازی‌ها</a>
+            <a href="#" id="header-nav-third-a">دسته‌بندی‌ها</a>
+            <a href="#about-us" id="header-nav-fourth-a">درباره ما</a>
+        </nav>
+
+    </header>
+
+
+    <main>
+
+            <section class="main-section-childs">در منطقه بازی می‌توانید با دنیای بزرگی از بازی‌های رایانه‌ای آشنا شوید و اطلاعات مختلفی درباره بازی‌های محبوب و جدید پیدا کنید. هدف ما این است که محیطی ساده، زیبا و کاربردی برای علاقه‌مندان به بازی‌های ویدیویی ایجاد کنیم؛ محیطی که در آن بتوانید بازی موردنظر خود را راحت‌تر پیدا کنید و اطلاعاتی مانند سبک بازی، توضیحات، سیستم موردنیاز و حجم آن را مشاهده کنید.
+فرقی نمی‌کند به بازی‌های اکشن، ترسناک، ماجراجویی، مسابقه‌ای یا سبک‌های دیگر علاقه داشته باشید؛ در منطقه بازی تلاش می‌کنیم دسته‌بندی‌های مختلفی در اختیار شما قرار دهیم تا پیدا کردن بازی موردنظر تا حد امکان ساده باشد. همچنین می‌توانید از قسمت جستجو استفاده کنید و نام بازی موردنظر خود را وارد کنید تا سریع‌تر به نتیجه برسید.
+ما در طراحی منطقه بازی تلاش کرده‌ایم ظاهر سایت ساده و در عین حال مدرن باشد. بخش‌های مختلف سایت به گونه‌ای طراحی شده‌اند که استفاده از آن‌ها در رایانه و تلفن همراه راحت باشد. در ادامه نیز بخش‌های بیشتری مانند کارت‌های بازی، دسته‌بندی‌ها، جستجو و اطلاعات کامل‌تر هر بازی به سایت اضافه خواهند شد.
+این سایت یک پروژه آموزشی است که با استفاده از زبان‌های نشانه‌گذاری و برنامه‌نویسی وب ساخته می‌شود و هدف آن تمرین طراحی صفحات وب، ایجاد رابط کاربری مناسب و یادگیری نحوه ارتباط بخش‌های مختلف یک وب‌سایت با یکدیگر است.
+در منطقه بازی می‌توانید با دنیای بزرگی از بازی‌های رایانه‌ای آشنا شوید و اطلاعات مختلفی درباره بازی‌های محبوب و جدید پیدا کنید. هدف ما این است که محیطی ساده، زیبا و کاربردی برای علاقه‌مندان به بازی‌های ویدیویی ایجاد کنیم؛ محیطی که در آن بتوانید بازی موردنظر خود را راحت‌تر پیدا کنید و اطلاعاتی مانند سبک بازی، توضیحات، سیستم موردنیاز و حجم آن را مشاهده کنید.
+فرقی نمی‌کند به بازی‌های اکشن، ترسناک، ماجراجویی، مسابقه‌ای یا سبک‌های دیگر علاقه داشته باشید؛ در منطقه بازی تلاش می‌کنیم دسته‌بندی‌های مختلفی در اختیار شما قرار دهیم تا پیدا کردن بازی موردنظر تا حد امکان ساده باشد. همچنین می‌توانید از قسمت جستجو استفاده کنید و نام بازی موردنظر خود را وارد کنید تا سریع‌تر به نتیجه برسید.
+ما در طراحی منطقه بازی تلاش کرده‌ایم ظاهر سایت ساده و در عین حال مدرن باشد. بخش‌های مختلف سایت به گونه‌ای طراحی شده‌اند که استفاده از آن‌ها در رایانه و تلفن همراه راحت باشد. در ادامه نیز بخش‌های بیشتری مانند کارت‌های بازی، دسته‌بندی‌ها، جستجو و اطلاعات کامل‌تر هر بازی به سایت اضافه خواهند شد.
+این سایت یک پروژه آموزشی است که با استفاده از زبان‌های نشانه‌گذاری و برنامه‌نویسی وب ساخته می‌شود و هدف آن تمرین طراحی صفحات وب، ایجاد رابط کاربری مناسب و یادگیری نحوه ارتباط بخش‌های مختلف یک وب‌سایت با یکدیگر است. </section>
+<div class="popular-div-games">       
+<p class="popular-div-games-first-p">🔥 بازی‌های محبوب</p>
+<p class="popular-div-games-second-p">8 بازی</p>
+</div>
+
+<div class="game-grid" id="games">
+        <div class="game-card">
+            <img src="./images/images.jfif" alt="عکس resident evil 4">
+            <h2>resident evil 4 </h2>
+            <p>سبک : ترسناک و اکشن</p>
+            <p>حجم : 8 گیگابایت</p>
+            <div class="div-under-article">
+                <p>🎮 pc</p>
+                <p>⭐ 9.5/10</p>
+            </div>
+            <a href="#" class="a-under-article">مشاهده بازی</a>
+        </div>
+        <div class="game-card">
+            <img src="./images/images (1).jfif" alt="عکس هالونایت">
+            <h2>hollow knight </h2>
+            <p>سبک : اکشن</p>
+            <p>حجم : 5 گیگابایت</p>
+            <div class="div-under-article">
+                <p>🎮 pc</p>
+                <p>⭐ 9.5/10</p>
+            </div>
+            <a href="#" class="a-under-article">مشاهده بازی</a>
+        </div>  
+        <div class="game-card">
+            <img src="./images/GXhhQnyuCN3JHeeR99MMLb.jpg" alt="عکس portal2">
+            <h2>portal 2</h2>
+            <p>سبک : پازل و ماجراجویی</p>
+            <p>حجم : 12 گیگابایت</p>
+            <div class="div-under-article">
+                <p>🎮 pc</p>
+                <p>⭐ 9.5/10</p>
+            </div>
+            <a href="#" class="a-under-article">مشاهده بازی</a>
+        </div>  
+        <div class="game-card">
+            <img src="./images/images (2).jfif" alt="عکس hades2">
+            <h2>hades 2 </h2>
+            <p>سبک : اکشن</p>
+            <p>حجم : 10 گیگابایت</p>
+            <div class="div-under-article">
+                <p>🎮 pc</p>
+                <p>⭐ 9.3/10</p>
+            </div>
+            <a href="#" class="a-under-article">مشاهده بازی</a>
+        </div>  
+        <div class="game-card">
+            <img src="./images/images (3).jfif" alt="عکس dead cells">
+            <h2>dead cells</h2>
+            <p>سبک : پلتفرمر</p>
+            <p>حجم : 2 گیگابایت</p>
+            <div class="div-under-article">
+                <p>🎮 pc</p>
+                <p>⭐ 9/10</p>
+            </div>
+            <a href="#" class="a-under-article">مشاهده بازی</a>
+        </div>  
+        <div class="game-card">
+            <img src="./images/images (4).jfif" alt="عکس celeste">
+            <h2>celeste </h2>
+            <p>سبک : پلتفرمر و مستقل</p>
+            <p>حجم : 1.2 گیگابایت</p>
+            <div class="div-under-article">
+                <p>🎮 pc</p>
+                <p>⭐ 9.2/10</p>
+            </div>
+            <a href="#" class="a-under-article">مشاهده بازی</a>
+        </div>  
+        <div class="game-card">
+            <img src="./images/dac3a26570b5ca1ddf703bf0add7cc7c527f71a2b56521baf69e20c7a573c610.avif" alt="">
+            <h2>terraria </h2>
+            <p>سبک : بقا</p>
+            <p>حجم : 0.2 گیگابایت</p>
+            <div class="div-under-article">
+                <p>🎮 pc</p>
+                <p>⭐ 9.2/10</p>
+            </div>
+            <a href="#" class="a-under-article">مشاهده بازی</a>
+        </div>  
+        <div class="game-card">
+            <img src="./images/images (5).jfif" alt="">
+            <h2>stardew valley </h2>
+            <p>سبک : شبیه سازی</p>
+            <p>حجم : 0.5 گیگابایت</p>
+            <div class="div-under-article">
+                <p>🎮 pc</p>
+                <p>⭐ 9.4/10</p>
+            </div>
+            <a href="#" class="a-under-article">مشاهده بازی</a>
+        </div>  
+        </div>
+        <div class="newest-games-text">
+            <p class="newest-games-text-first">🆕 جدیدترین بازی‌ها</p>
+            <p class="newest-games-text-second">3 بازی</p>
+        </div>
+        <div class="newest-games">
+                    <div class="game-card1">
+                        <img src="./images/images (6).jfif" alt="">
+                        <div class="div-under-div">
+            <h2>resident evil 4 </h2>
+            <p>سبک : ترسناک و اکشن</p>
+            <p>حجم : 8 گیگابایت</p>
+            <div class="div-under-article1">
+                <p>🎮 pc</p>
+                <p>⭐ 9.5/10</p>
+            </div>
+            <a href="#" class="a-under-article1">مشاهده بازی</a>
+            </div>
+        </div>  
+                <div class="game-card1">
+            <img src="./images/images.jfif" alt="">
+            <div class="div-under-div">
+            <h2>resident evil 4 </h2>
+            <p>سبک : ترسناک و اکشن</p>
+            <p>حجم : 8 گیگابایت</p>
+            <div class="div-under-article1">
+                <p>🎮 pc</p>
+                <p>⭐ 9.5/10</p>
+            </div>
+            <a href="#" class="a-under-article1">مشاهده بازی</a>
+        </div>
+        </div>  
+                <div class="game-card1">
+            <img src="./images/images.jfif" alt="">
+            <div class="div-under-div">
+            <h2>resident evil 4 </h2>
+            <p>سبک : ترسناک و اکشن</p>
+            <p>حجم : 8 گیگابایت</p>
+            <div class="div-under-article1">
+                <p>🎮 pc</p>
+                <p>⭐ 9.5/10</p>
+            </div>
+            <a href="#" class="a-under-article1">مشاهده بازی</a>
+        </div>  
+        </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="div-under-footer">
+            <h2>از بازی‌های جدید باخبر شو 🎮</h2>
+            <p>ایمیل خود را وارد کنید تا از بازی‌های جدید مطلع شوید.</p>
+            <form action="#">
+            <input type="email" class="users-email-input" placeholder="ایمیل خود را وارد کنید...">
+            <button type="submit" class="button-under-div-under-footer">ثبت</button>
+            </form>
+        </div>
+        <div class="div-brother-of-div-under-footer" id="about-us">
+            <h3>© 2026 GameZone</h3>
+            <p>کليه حقوق محصولات و محتوای اين سایت متعلق به گیم زون می باشد و هر گونه کپی برداری از محتوا و محصولات سایت غیر مجاز و بدون رضایت ماست.</p>
+            <p>سازنده نوید عدالتی</p>
+        </div>
+    </footer>
+<script>
+
+// =======================
+// گرفتن المان‌ها
+// =======================
+
+const searchInput = document.querySelector(".search-box");
+
+const cards = document.querySelectorAll(
+    ".game-card, .game-card1"
+);
+
+
+
+
+// =======================
+// سرچ بازی‌ها
+// =======================
+
+searchInput.addEventListener("input", ()=>{
+
+    let value = searchInput.value.toLowerCase().trim();
+
+
+    cards.forEach(card=>{
+
+        let title = card
+        .querySelector("h2")
+        .textContent
+        .toLowerCase();
+
+
+        if(title.includes(value)){
+
+            card.style.display="block";
+
+        }
+        else{
+
+            card.style.display="none";
+
+        }
+
+    });
+
+
+});
+
+
+
+
+
+// =======================
+// انیمیشن ظاهر شدن کارت‌ها
+// =======================
+
+
+const observer = new IntersectionObserver(entries=>{
+
+
+    entries.forEach(entry=>{
+
+        if(entry.isIntersecting){
+
+            entry.target.style.opacity="1";
+
+            entry.target.style.transform=
+            "translateY(0)";
+
+        }
+
+    });
+
+
+});
+
+
+cards.forEach(card=>{
+
+    card.style.opacity="0";
+
+    card.style.transform=
+    "translateY(50px)";
+
+    card.style.transition=
+    "0.5s";
+
+
+    observer.observe(card);
+
+});
+
+
+
+
+
+
+// =======================
+// دکمه مشاهده بازی
+// =======================
+
+
+const buttons =
+document.querySelectorAll(
+".a-under-article, .a-under-article1"
+);
+
+
+buttons.forEach(button=>{
+
+
+button.addEventListener("click",(e)=>{
+
+
+e.preventDefault();
+
+
+let card =
+button.closest(
+".game-card, .game-card1"
+);
+
+
+let name =
+card.querySelector("h2")
+.textContent;
+
+
+
+alert(
+"🎮 صفحه بازی " +
+name +
+" به زودی ساخته می‌شود"
+);
+
+
+
+});
+
+
+});
+
+
+
+
+
+
+// =======================
+// علاقه مندی ❤️
+// =======================
+
+
+cards.forEach(card=>{
+
+
+let img = card.querySelector("img");
+
+
+if(!img) return;
+
+
+
+let container = img.parentElement;
+
+
+container.style.position="relative";
+
+
+
+let heart =
+document.createElement("button");
+
+
+heart.innerHTML="🤍";
+
+
+heart.className=
+"favorite-btn";
+
+
+
+container.appendChild(heart);
+
+
+
+heart.addEventListener("click",(e)=>{
+
+
+e.stopPropagation();
+
+
+
+if(heart.innerHTML==="🤍"){
+
+
+heart.innerHTML="❤️";
+
+
+heart.classList.add("liked");
+
+
+}
+
+
+else{
+
+
+heart.innerHTML="🤍";
+
+
+heart.classList.remove("liked");
+
+
+}
+
+
+
+});
+
+
+
+});
+
+
+
+
+
+
+
+
+// =======================
+// افکت سه بعدی کارت
+// =======================
+
+
+cards.forEach(card=>{
+
+
+card.addEventListener("mousemove",(e)=>{
+
+
+let rect =
+card.getBoundingClientRect();
+
+
+
+let x =
+e.clientX - rect.left;
+
+
+let y =
+e.clientY - rect.top;
+
+
+
+let rotateX =
+(y - rect.height/2) / 20;
+
+
+let rotateY =
+(rect.width/2 - x) / 20;
+
+
+
+card.style.transform =
+`
+perspective(600px)
+rotateX(${rotateX}deg)
+rotateY(${rotateY}deg)
+scale(1.03)
+`;
+
+
+
+});
+
+
+
+
+
+card.addEventListener("mouseleave",()=>{
+
+
+card.style.transform="";
+
+
+});
+
+
+
+});
+
+
+
+
+
+
+
+
+// =======================
+// فرم ایمیل
+// =======================
+
+
+const form =
+document.querySelector("form");
+
+
+
+if(form){
+
+
+form.addEventListener("submit",(e)=>{
+
+
+e.preventDefault();
+
+
+
+alert(
+"✅ ایمیل شما با موفقیت ثبت شد"
+);
+
+
+
+form.reset();
+
+
+
+});
+
+
+}
+
+
+
+</script>
+</body>
+
+</html>
