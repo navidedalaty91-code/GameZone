@@ -29,7 +29,60 @@
         body {
             margin: 0;
             color: white;
+            
         }
+
+        @media (hover: hover) and (pointer: fine) {
+        nav a:hover {
+            border-color: #6aa7ff;
+            transform: scale(1.05);
+            background-color: #34445c;
+        }
+        .game-card:hover{
+            transform: translateY(-10px) scale(1.03) ;
+            border-color: #6aa7ff;
+            box-shadow: 10px -10px 20px #000;
+        }
+        .game-card img:hover{
+            transform: scale(1.05);
+        }
+        .a-under-article:hover{
+            transform: scale(1.1);
+            cursor: pointer;
+        }
+.game-card1:hover{
+    transform: translateY(-10px) scale(1.05);
+    border-color: #6aa7ff;
+}
+        .a-under-article1:hover{
+            transform: scale(1.1);
+            cursor: pointer;
+        }
+        .button-under-div-under-footer:hover{
+            transform: scale(1.03);
+            box-shadow: 0 0 20px rgba(37,99,235,.5);
+        }
+    .game-grid:has(.game-card:hover) .game-card:not(:hover) {
+        filter: blur(1px);
+    }
+
+    .game-grid:has(.game-card img:hover) .game-card:not(:has(img:hover)) img {
+        filter: blur(5px);
+    }
+
+    .game-grid:has(.game-card a:hover) .game-card:not(:has(a:hover)) {
+        filter: blur(10px);
+    }
+
+    .newest-games:has(.game-card1:hover) .game-card1:not(:hover) {
+        filter: blur(1px);
+    }
+    .favorite-btn:hover{
+
+    transform:scale(1.15);
+
+}
+}
 
         /* Header */
 
@@ -47,6 +100,13 @@
 
             gap: 20px;
             border: 1px solid #2e3745;
+            position: fixed;
+                top: 10px;
+    left: 2%;
+    right: 2%;
+    z-index: 1000;
+
+            
         }
 
         /* Logo */
@@ -102,11 +162,11 @@
         nav {
             display: flex;
             align-items: center;
-            justify-content: flex-end;
+            justify-content: center;
 
             gap: 10px;
 
-            flex-wrap: wrap;
+            flex-wrap: nowrap;
         }
 
         nav a {
@@ -129,16 +189,12 @@
             transition: all 0.3s ease;
         }
 
-        nav a:hover {
-            border-color: #6aa7ff;
-            transform: scale(1.05);
-            background-color: #34445c;
-        }
 
         /* Main */
 
         main {
             line-height: 2;
+            padding-top: 150px;
         }
 
         .main-section-childs,
@@ -166,6 +222,10 @@
 
             header {
                 flex-direction: column;
+                position: static;
+            }
+            main{
+                padding-top: 40px;
             }
 
             .logo {
@@ -227,19 +287,13 @@
             transition: all 0.3s ease;
         }
 
-        .game-card:hover{
-            transform: translateY(-10px) scale(1.03) ;
-            border-color: #6aa7ff;
-            box-shadow: 10px -10px 20px #000;
-        }
+
         .game-card img {
             width: 100%;
             border-radius: 10px;
             transition: all 0.3s ease;
         }
-        .game-card img:hover{
-            transform: scale(1.05);
-        }
+
         .a-under-article{
             display: block;
             color: #ffffff;
@@ -259,10 +313,7 @@
     );
 }
 
-        .a-under-article:hover{
-            transform: scale(1.1);
-            cursor: pointer;
-        }
+
         .div-under-article{
             font-size: 12px;
             display: flex;
@@ -284,17 +335,6 @@
             font-size: medium;
             margin-top: 10px;
         }
-        .game-grid:has(.game-card:hover) .game-card:not(:hover) {
-    filter: blur(1px);
-}
-
- .game-grid:has(.game-card img:hover) .game-card:not(:has(img:hover)) img {
-    filter: blur(5px);
-}
-
- .game-grid:has(.game-card a:hover) .game-card:not(:has(a:hover)) {
-    filter: blur(10px);
-}
 
 .popular-div-games{
     display: flex;
@@ -345,10 +385,7 @@
     margin-top: 30px;
     padding-bottom: 20px;
 }
-.game-card1:hover{
-    transform: translateY(-10px) scale(1.05);
-    border-color: #6aa7ff;
-}
+
 .game-card1 img{
     width: 100%;
     border-radius: 15px 15px 0 0;
@@ -377,13 +414,8 @@
             text-align: center;
             transition: all 0.3s ease;
         }
-        .a-under-article1:hover{
-            transform: scale(1.1);
-            cursor: pointer;
-        }
-        .newest-games:has(.game-card1:hover) .game-card1:not(:hover) {
-            filter: blur(1px);
-        }
+
+
         
         .div-under-footer{
             background: linear-gradient(135deg,#1f2937,#221f37);
@@ -433,10 +465,7 @@
             color: #fff;
                 font-family: 'Vazir';
         }
-        .button-under-div-under-footer:hover{
-            transform: scale(1.03);
-            box-shadow: 0 0 20px rgba(37,99,235,.5);
-        }
+
         .div-brother-of-div-under-footer{
             text-align: center;
             line-height: 2;
@@ -451,22 +480,35 @@
 /* ========================= */
 
 
-/* لپتاپ کوچک و تبلت */
+/* ========================= */
+/*       Responsive Design   */
+/* ========================= */
+
+
+/* ========================= */
+/* لپتاپ کوچک و تبلت بزرگ */
+/* ========================= */
+
 @media (max-width:1200px){
 
     .game-grid{
-        grid-template-columns: repeat(3, 300px);
+        grid-template-columns:repeat(3, minmax(0, 300px));
+        justify-content:center;
     }
 
     .newest-games{
-        grid-template-columns: repeat(2,350px);
+        grid-template-columns:repeat(2, minmax(0, 350px));
+        justify-content:center;
         margin-right:0;
     }
 
 }
 
 
+/* ========================= */
 /* تبلت */
+/* ========================= */
+
 @media (max-width:900px){
 
     header{
@@ -475,50 +517,48 @@
         margin:10px 3%;
     }
 
-
     .logo{
         padding-right:0;
     }
 
-
     .search-box{
         width:80%;
+        max-width:100%;
     }
-
 
     nav{
         width:100%;
         justify-content:center;
+        gap:10px;
     }
-
 
     nav a{
         flex:1;
         text-align:center;
+        min-width:0;
     }
-
 
     .game-grid{
-        grid-template-columns:repeat(2, minmax(250px,300px));
+        grid-template-columns:repeat(2, minmax(0, 1fr));
+        width:94%;
+        margin:auto;
     }
-
 
     .newest-games{
-        grid-template-columns:repeat(2,300px);
+        grid-template-columns:repeat(2, minmax(0, 1fr));
+        width:94%;
+        margin:auto;
     }
-
 
     .popular-div-games,
     .newest-games-text{
         font-size:20px;
     }
 
-
     .popular-div-games-first-p,
     .newest-games-text-first{
         margin-right:30px;
     }
-
 
     .popular-div-games-second-p,
     .newest-games-text-second{
@@ -528,156 +568,188 @@
 }
 
 
-
+/* ========================= */
 /* موبایل */
-@media(max-width:600px){
+/* ========================= */
 
+@media (max-width:600px){
 
     header{
         padding:20px 10px;
+        margin:10px 2%;
+        gap:20px;
     }
 
+    .logo{
+        max-width:100%;
+    }
 
     .logo h1{
         font-size:28px;
     }
 
-
     .search-box{
         width:95%;
+        max-width:100%;
     }
-
 
     nav{
         display:grid;
         grid-template-columns:1fr;
         width:100%;
+        gap:10px;
     }
-
 
     nav a{
         width:100%;
+        box-sizing:border-box;
     }
-
-
 
     .main-section-childs{
         width:94%;
+        box-sizing:border-box;
         padding:15px;
         font-size:14px;
     }
 
-
-
     .game-grid{
-
         grid-template-columns:1fr;
-
         width:90%;
-
+        max-width:500px;
         margin:auto;
-
     }
-
 
     .game-card{
-
         width:100%;
-
+        box-sizing:border-box;
     }
-
-
 
     .newest-games{
-
         grid-template-columns:1fr;
-
         width:90%;
-
+        max-width:500px;
         margin:auto;
-
     }
-
 
     .game-card1{
-
         width:100%;
-
+        box-sizing:border-box;
     }
-
-
 
     .popular-div-games,
     .newest-games-text{
-
         font-size:18px;
-
         margin-right:20px;
         margin-left:20px;
-
     }
-
 
     .popular-div-games-first-p,
     .newest-games-text-first{
-
         margin-right:0;
-
     }
-
 
     .popular-div-games-second-p,
     .newest-games-text-second{
-
         margin-left:0;
-
     }
-
-
 
     .div-under-footer{
-
-        margin:30px 10px;
-
+        width:94%;
+        box-sizing:border-box;
+        margin:30px auto;
         padding:20px 10px;
-
     }
-
-
 
     .div-under-footer h2{
-
         font-size:22px;
-
     }
-
-
 
     .users-email-input{
-
         width:90%;
-
+        max-width:100%;
+        box-sizing:border-box;
     }
-
-
 
     .button-under-div-under-footer{
-
         margin-top:15px;
-
         width:90%;
-
+        max-width:100%;
         margin-right:0;
-
+        box-sizing:border-box;
     }
 
-
     .div-brother-of-div-under-footer{
-
         padding:15px;
-
         font-size:13px;
+        box-sizing:border-box;
+    }
 
+}
+
+
+/* ========================= */
+/* گوشی‌های کوچک */
+/* ========================= */
+
+@media (max-width:400px){
+
+    header{
+        margin:8px 2%;
+        padding:15px 8px;
+    }
+
+    .logo h1{
+        font-size:24px;
+    }
+
+    .search-box{
+        width:100%;
+    }
+
+    nav a{
+        padding-left:10px;
+        padding-right:10px;
+    }
+
+    .game-grid,
+    .newest-games{
+        width:94%;
+    }
+
+    .popular-div-games,
+    .newest-games-text{
+        font-size:17px;
+        margin-right:10px;
+        margin-left:10px;
+    }
+
+}
+
+
+/* ========================= */
+/* گوشی‌های خیلی کوچک */
+/* ========================= */
+
+@media (max-width:350px){
+
+    .logo h1{
+        font-size:22px;
+    }
+
+    .main-section-childs{
+        width:96%;
+        padding:10px;
+        font-size:13px;
+    }
+
+    .game-grid,
+    .newest-games{
+        width:96%;
+    }
+
+    .div-under-footer{
+        width:96%;
+        padding:15px 8px;
     }
 
 }
@@ -721,11 +793,7 @@ transform:translateY(0);
 }
 
 
-.favorite-btn:hover{
 
-    transform:scale(1.15);
-
-}
 
 
 .favorite-btn.liked{
@@ -734,6 +802,17 @@ transform:translateY(0);
     0 0 20px #ff0066;
 
 }
+/* .tel{
+    background-color: #151c26;
+    width: 70px;
+    margin-top: 20px;
+    padding: 10px;
+    border-radius: 15px;
+}
+.tel svg{
+    text-align: center;
+
+} */
    </style>
 </head>
 
@@ -916,8 +995,22 @@ transform:translateY(0);
             <form action="#">
             <input type="email" class="users-email-input" placeholder="ایمیل خود را وارد کنید...">
             <button type="submit" class="button-under-div-under-footer">ثبت</button>
-            </form>
-        </div>
+        </form>
+    </div>
+    <!-- <div class="tel"><a href="#"><svg width="40" height="40" viewBox="0 0 24 24"
+ fill="none" xmlns="http://www.w3.org/2000/svg">
+
+<path
+    d="M21.5 3.5L2.8 10.7C1.5 11.2 1.5 12.1 2.6 12.5L7.3 14L9.1 19.7C9.4 20.6 9.9 20.8 10.5 20.2L13.2 17.6L18 21.1C18.9 21.6 19.5 21.1 19.7 20.2L22.9 4.8C23.2 3.6 22.4 3 21.5 3.5Z"
+    fill="#229ED9"/>
+
+<path
+    d="M7.3 14L18.7 7.2L10.5 15.2L10.2 18.7"
+    stroke="white"
+    stroke-width="1.2"
+    stroke-linecap="round"
+    stroke-linejoin="round"/>
+</svg></a></div> -->
         <div class="div-brother-of-div-under-footer" id="about-us">
             <h3>© 2026 GameZone</h3>
             <p>کليه حقوق محصولات و محتوای اين سایت متعلق به گیم زون می باشد و هر گونه کپی برداری از محتوا و محصولات سایت غیر مجاز و بدون رضایت ماست.</p>
@@ -1065,6 +1158,206 @@ name +
 
 
 });
+
+
+
+
+
+
+// =======================
+// علاقه مندی ❤️
+// =======================
+
+
+cards.forEach(card=>{
+
+
+let img = card.querySelector("img");
+
+
+if(!img) return;
+
+
+
+let container = img.parentElement;
+
+
+container.style.position="relative";
+
+
+
+let heart =
+document.createElement("button");
+
+
+heart.innerHTML="🤍";
+
+
+heart.className=
+"favorite-btn";
+
+
+
+container.appendChild(heart);
+
+
+
+heart.addEventListener("click",(e)=>{
+
+
+e.stopPropagation();
+
+
+
+if(heart.innerHTML==="🤍"){
+
+
+heart.innerHTML="❤️";
+
+
+heart.classList.add("liked");
+
+
+}
+
+
+else{
+
+
+heart.innerHTML="🤍";
+
+
+heart.classList.remove("liked");
+
+
+}
+
+
+
+});
+
+
+
+});
+
+
+
+
+
+
+
+
+// =======================
+// افکت سه بعدی کارت
+// =======================
+
+
+cards.forEach(card=>{
+
+
+card.addEventListener("mousemove",(e)=>{
+
+
+let rect =
+card.getBoundingClientRect();
+
+
+
+let x =
+e.clientX - rect.left;
+
+
+let y =
+e.clientY - rect.top;
+
+
+
+let rotateX =
+(y - rect.height/2) / 20;
+
+
+let rotateY =
+(rect.width/2 - x) / 20;
+
+
+
+card.style.transform =
+`
+perspective(600px)
+rotateX(${rotateX}deg)
+rotateY(${rotateY}deg)
+scale(1.03)
+`;
+
+
+
+});
+
+
+
+
+
+card.addEventListener("mouseleave",()=>{
+
+
+card.style.transform="";
+
+
+});
+
+
+
+});
+
+
+
+
+
+
+
+
+// =======================
+// فرم ایمیل
+// =======================
+
+
+const form =
+document.querySelector("form");
+
+
+
+if(form){
+
+
+form.addEventListener("submit",(e)=>{
+
+
+e.preventDefault();
+
+
+
+alert(
+"✅ ایمیل شما با موفقیت ثبت شد"
+);
+
+
+
+form.reset();
+
+
+
+});
+
+
+}
+
+
+
+</script>
+</body>
+
+</html>
+
 
 
 
